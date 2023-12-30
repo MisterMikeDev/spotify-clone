@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { playlists, songs } from "../lib/data";
+import { USERNAME, AVATAR } from "../lib/consts";
+import MusicTable from "../components/MusicTable.astro";
+const ID = "1";
+
+const playlist = playlists.find((playlist) => playlist.id === ID);
+
+const songsInPlaylist = songs.filter((song) => song.albumId === Number(ID));
+const songsLength = songsInPlaylist.length;
+---
+
+<Layout title="Spotify - Tus me gusta">
+    <main
+        class="flex flex-col gap-16"
+        transition:name={`playlist ${ID} fade`}
+        transition:animate="fade"
+    >
+        <header class="flex gap-4">
+            <img
+                class="lg:w-56 lg:h-56 rounded-md w-[8rem] h-[8rem]"
+                src={playlist?.cover}
+                alt={playlist?.title}
+                transition:name=`playlist-image`
+            />
+            <div class="flex flex-col gap-4 h-52 justify-end">
+                <span>Playlist</span>
+                <h2
+                    class="text-7xl font-extrabold"
+                    transition:name=`playlist-title`
+                >
+                    {playlist?.title}
+                </h2>
+                <div class="flex gap-2 items-center">
+                    <img
+                        src={AVATAR}
+                        alt={`${USERNAME}'s avatar`}
+                        class="w-8 h-8 rounded-full"
+                    />
+                    {USERNAME}
+                    <div>
+                        {
+                            songsLength === 0 ? (
+                                <span>No hay canciones</span>
+                            ) : songsLength === 1 ? (
+                                <span>1 canción</span>
+                            ) : (
+                                <span>{songsLength} canciones</span>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <MusicTable songs={songsInPlaylist} />
+        </section>
+    </main>
+</Layout>

@@ -1,0 +1,38 @@
+---
+import type { Playlist } from "../lib/data";
+import TogglePlay from "./TogglePlay";
+export interface Props {
+    playlist: Playlist;
+    link: string;
+}
+
+const { playlist, link } = Astro.props;
+const { title, cover, artists } = playlist;
+---
+
+<div
+    id="playlist-card"
+    class="w-52 h-72 bg-containerSpotifyOther hover:bg-containerSpotifyOther/50 rounded-md flex flex-col gap-2 p-4 cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200"
+    draggable="false"
+>
+    <div
+        class="aspect-square rounded-t-md min-w-[160px] min-h-[160px] relative overflow-hidden"
+    >
+        <img src={cover} alt={title} draggable="false" />
+        <TogglePlay client:visible fullGrow />
+    </div>
+    <div class="flex flex-col gap-1 overflow-hidden">
+        <a href={link} class="w-fit">
+            <h3
+                class="text-lg font-bold text-left max-h-[33px] overflow-hidden"
+            >
+                {title}
+            </h3>
+            <p
+                class="text-sm font-light text-left text-textSpotify [text-wrap:balance;] max-h-[60px] overflow-hidden"
+            >
+                {artists}
+            </p>
+        </a>
+    </div>
+</div>

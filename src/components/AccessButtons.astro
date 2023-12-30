@@ -1,0 +1,50 @@
+---
+import ArrowLeft from "../icons/ArrowLeft.astro";
+import ArrowRight from "../icons/ArrowRight.astro";
+import Notification from "../icons/Notification.astro";
+import { AVATAR, USERNAME } from "../lib/consts";
+---
+
+<section class="flex justify-between absolute w-full top-0 left-0 p-5 z-20">
+    <div class="flex gap-2 fill-white">
+        <button
+            id="back-page"
+            class="w-8 h-8 bg-backgroundSpotify p-2 rounded-full"
+        >
+            <ArrowLeft />
+        </button>
+        <button
+            id="next-page"
+            class="w-8 h-8 bg-backgroundSpotify p-2 rounded-full"
+        >
+            <ArrowRight />
+        </button>
+    </div>
+    <div class="flex gap-4">
+        <div
+            class="w-10 h-10 grid place-content-center bg-backgroundSpotify rounded-full"
+        >
+            <Notification />
+        </div>
+        <div
+            class="w-10 h-10 grid place-content-center bg-backgroundSpotify rounded-full"
+        >
+            <img
+                src={`${AVATAR}`}
+                alt={`${USERNAME} profile photo`}
+                class="w-8 h-8 rounded-full"
+            />
+        </div>
+    </div>
+</section>
+<script>
+    const $backButton = document.getElementById("back-page");
+    const $nextButton = document.getElementById("next-page");
+    $backButton?.addEventListener("click", () => {
+        globalThis.window.history.back();
+    });
+
+    $nextButton?.addEventListener("click", () => {
+        globalThis.window.history.forward();
+    });
+</script>

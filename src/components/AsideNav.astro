@@ -1,0 +1,19 @@
+---
+import SideMenuLink from "./SideMenuLink.astro";
+import Home from "../icons/Home.astro";
+import Search from "../icons/Search.astro";
+---
+
+<nav class="bg-containerSpotify rounded-lg w-full h-[120px] p-5">
+    <ul class="flex flex-col gap-6 ml-2">
+        <SideMenuLink href="/">
+            <Home />
+             Inicio
+        </SideMenuLink>
+
+        <SideMenuLink href="#">
+            <Search />
+             Buscar
+        </SideMenuLink>
+    </ul>
+</nav>

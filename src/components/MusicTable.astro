@@ -1,0 +1,34 @@
+---
+import MusicTableHeader from "./MusicTableHeader.astro";
+import type { Song } from "../lib/data";
+import Clock from "../icons/Clock.astro";
+import MusicTableSong from "./MusicTableSong.astro";
+import Separator from "./Separator.astro";
+
+export interface Props {
+    songs: Song[];
+}
+
+const { songs } = Astro.props;
+---
+
+<section class="w-full flex flex-col">
+    <header class="flex px-5 gap-2">
+        <MusicTableHeader>#</MusicTableHeader>
+        <MusicTableHeader grow titleGrow>Título</MusicTableHeader>
+        <MusicTableHeader grow center>Álbum</MusicTableHeader>
+        <MusicTableHeader grow center>Fecha que se agregó</MusicTableHeader>
+        <MusicTableHeader />
+        <MusicTableHeader>
+            <Clock />
+        </MusicTableHeader>
+    </header>
+    <Separator />
+    <main class="flex flex-col flex-1 px-5 gap-5">
+        {
+            songs.map((song, index) => (
+                <MusicTableSong song={song} index={index} />
+            ))
+        }
+    </main>
+</section>

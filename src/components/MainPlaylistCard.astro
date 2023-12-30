@@ -1,0 +1,43 @@
+---
+import type { Playlist } from "../lib/data";
+import TogglePlay from "./TogglePlay";
+
+export interface Props {
+    playlist: Playlist;
+    link: string;
+    index: number;
+}
+
+const { playlist, link, index } = Astro.props;
+const { albumId, cover, title } = playlist;
+---
+
+<article
+    class="flex justify-between items-center gap-4 bg-tagSpotify/10 rounded-md relative overflow-hidden"
+    transition:name={`playlist ${albumId} fade`}
+>
+    <a href={link} class="flex items-center gap-4 max-w-[75%] w-full">
+        <img
+            class="w-16 h-16 rounded-l-md"
+            src={cover}
+            alt={title}
+            transition:name=`playlist ${albumId} image`
+        />
+        <h2
+            class="text-lg font-semibold"
+            transition:name=`playlist ${albumId} title`
+        >
+            {title}
+        </h2>
+    </a>
+    {
+        index === 0 && (
+            <img
+                src="/playlist-playing.gif"
+                alt="Icon for playing a playlist"
+                class="w-4 h-4 mr-4"
+            />
+        )
+    }
+    <TogglePlay id={albumId} client:load fullGrow={false} />
+</article>

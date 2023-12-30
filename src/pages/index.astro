@@ -1,0 +1,54 @@
+---
+import Phrase from "../components/Phrase.astro";
+import PlaylistCard from "../components/PlaylistCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { playlists, weeklyMix, suggestPlaylist } from "../lib/data";
+import { USERNAME } from "../lib/consts";
+import MainPlaylistCard from "../components/MainPlaylistCard.astro";
+---
+
+<Layout title="Spotify - Reproductor web: música para todos">
+    <main class="flex">
+        <Phrase />
+    </main>
+    <section class="mt-4 grid grid-cols-2 xl:grid-cols-3 gap-4">
+        {
+            playlists
+                .slice(0, 6)
+                .map((playlist, i) => (
+                    <MainPlaylistCard
+                        playlist={playlist}
+                        link={i === 0 ? "/likes" : `/album/${i + 1}`}
+                        index={i + 1}
+                    />
+                ))
+        }
+    </section>
+    <section class="mt-8">
+        <h1 class="text-2xl font-bold hover:underline cursor-pointer w-fit">
+            Hecho para {USERNAME}
+        </h1>
+        <ul class="flex gap-4 mt-6">
+            {
+                weeklyMix.map((playlist) => (
+                    <PlaylistCard playlist={playlist} link={`#`} />
+                ))
+            }
+        </ul>
+    </section>
+    <section class="mt-8">
+        <h1 class="text-2xl font-bold hover:underline cursor-pointer w-fit">
+            Sugerencias para hoy
+        </h1>
+        <ul class="flex gap-4 mt-6">
+            {
+                suggestPlaylist.map((playlist, i) => (
+                    <PlaylistCard
+                        playlist={playlist}
+                        link={`/suggest/${i + 1}`}
+                    />
+                ))
+            }
+        </ul>
+    </section>
+</Layout>

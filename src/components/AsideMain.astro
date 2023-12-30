@@ -1,0 +1,49 @@
+---
+import SideMenuLink from "./SideMenuLink.astro";
+import Tag from "./Tag.astro";
+import Library from "../icons/Library.astro";
+import Search from "../icons/Search.astro";
+import List from "../icons/List.astro";
+import { playlists } from "../lib/data";
+import PlaylistLink from "./PlaylistLink.astro";
+---
+
+<main
+    class="bg-containerSpotify rounded-lg w-full flex-1 max-h-[725px] p-5 flex flex-col gap-5"
+>
+    <ul class="flex flex-col gap-6 ml-2">
+        <SideMenuLink href="/">
+            <Library />
+             Tu biblioteca
+        </SideMenuLink>
+    </ul>
+
+    <ul id="no-scroll" class="w-full h-9 flex gap-2 overflow-auto">
+        <Tag>Playlists</Tag>
+        <Tag>Artistas</Tag>
+        <Tag>Álbumes</Tag>
+        <Tag>Podcasts y programas</Tag>
+    </ul>
+
+    <section class="flex justify-between">
+        <button
+            class="w-10 h-10 text-textSpotify hover:bg-tagSpotify grid place-content-center rounded-full"
+        >
+            <Search />
+        </button>
+        <button class="flex justify-center items-center gap-2 text-textSpotify">
+            Recientes
+            <List />
+        </button>
+    </section>
+
+    <section>
+        <ul class="flex flex-col gap-2 overflow-y-scroll" id="no-scroll">
+            {
+                playlists.map((playlist, i) => (
+                    <PlaylistLink playlist={playlist} />
+                ))
+            }
+        </ul>
+    </section>
+</main>

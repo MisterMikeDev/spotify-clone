@@ -1,0 +1,15 @@
+---
+const date = new Date();
+const hour = date.getHours();
+let greeting = "";
+
+if (hour >= 5 && hour < 12) {
+    greeting = "Buenos días";
+} else if (hour >= 12 && hour < 18) {
+    greeting = "Buenas tardes";
+} else {
+    greeting = "Buenas noches";
+}
+---
+
+<h1 class="text-3xl font-bold z-10">{greeting}</h1>

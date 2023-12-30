@@ -1,0 +1,39 @@
+---
+import type { Song } from "../lib/data";
+import LikeHeart from "../icons/LikeHeart.astro";
+
+export interface Props {
+    index: number;
+    song: Song;
+}
+
+const { index, song } = Astro.props;
+---
+
+<div class="text-textSpotify flex items-center gap-4">
+    <span class="truncate text-gray-400">{index + 1}.</span>
+    <picture class="flex items-center gap-5 max-w-[210px] w-full"
+        ><img
+            src={song.image}
+            alt={song.title}
+            class="w-14 h-14 rounded-md object-cover object-center"
+        />
+        <div class="flex flex-col gap-1 truncate">
+            <span class="truncate font-bold">{song.title}</span>
+            <span class="truncate text-gray-400">{song.artists.join(", ")}</span
+            >
+        </div></picture
+    >
+    <span class="truncate text-gray-400 flex-1 text-center">{song.album}</span>
+    <span class="truncate text-gray-400 flex-1 text-center">
+        {
+            Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }).format(new Date())
+        }
+    </span>
+    <span class="truncate text-greenSpotify"><LikeHeart /></span>
+    <span class="truncate text-gray-400">{song.duration}</span>
+</div>
