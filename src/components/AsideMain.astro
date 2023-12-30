@@ -9,7 +9,7 @@ import PlaylistLink from "./PlaylistLink.astro";
 ---
 
 <main
-    class="bg-containerSpotify rounded-lg w-full flex-1 max-h-[725px] p-5 flex flex-col gap-5"
+    class="bg-containerSpotify rounded-lg w-full flex-grow p-5 flex flex-col gap-5"
 >
     <ul class="flex flex-col gap-6 ml-2">
         <SideMenuLink href="/">
@@ -38,7 +38,10 @@ import PlaylistLink from "./PlaylistLink.astro";
     </section>
 
     <section>
-        <ul class="flex flex-col gap-2 overflow-y-scroll" id="no-scroll">
+        <ul
+            class="flex flex-col gap-2 overflow-y-scroll max-h-[450px]"
+            id="no-scroll"
+        >
             {
                 playlists.map((playlist, i) => (
                     <PlaylistLink playlist={playlist} />
