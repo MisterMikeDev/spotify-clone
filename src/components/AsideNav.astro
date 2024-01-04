@@ -4,16 +4,18 @@ import Home from "../icons/Home.astro";
 import Search from "../icons/Search.astro";
 ---
 
-<nav class="bg-containerSpotify rounded-lg w-full h-[120px] p-5">
+<nav
+    class="bg-containerSpotify rounded-lg cmd:w-full w-[6rem] h-[120px] p-5 flex flex-col gap-5 cmd:items-start items-center transition-all duration-200"
+>
     <ul class="flex flex-col gap-6 ml-2">
         <SideMenuLink href="/">
             <Home />
-             Inicio
+            <span class="cmd:block hidden">Inicio</span>
         </SideMenuLink>
 
         <SideMenuLink href="#">
             <Search />
-             Buscar
+            <span class="cmd:block hidden">Buscar</span>
         </SideMenuLink>
     </ul>
 </nav>

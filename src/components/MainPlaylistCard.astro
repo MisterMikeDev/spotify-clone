@@ -18,7 +18,7 @@ const { albumId, cover, title } = playlist;
 >
     <a href={link} class="flex items-center gap-4 max-w-[75%] w-full">
         <img
-            class="w-16 h-16 rounded-l-md"
+            class="w-auto h-full max-h-[5rem] rounded-l-md aspect-square"
             src={cover}
             alt={title}
             transition:name=`playlist ${albumId} image`

@@ -13,12 +13,11 @@ const { title, cover, artists } = playlist;
 <div
     id="playlist-card"
     class="w-52 h-72 bg-containerSpotifyOther hover:bg-containerSpotifyOther/50 rounded-md flex flex-col gap-2 p-4 cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200"
-    draggable="false"
 >
     <div
         class="aspect-square rounded-t-md min-w-[160px] min-h-[160px] relative overflow-hidden"
     >
-        <img src={cover} alt={title} draggable="false" />
+        <img src={cover} alt={title} />
         <TogglePlay client:visible fullGrow />
     </div>
     <div class="flex flex-col gap-1 overflow-hidden">

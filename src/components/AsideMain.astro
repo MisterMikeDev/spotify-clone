@@ -9,16 +9,16 @@ import PlaylistLink from "./PlaylistLink.astro";
 ---
 
 <main
-    class="bg-containerSpotify rounded-lg w-full flex-grow p-5 flex flex-col gap-5"
+    class="bg-containerSpotify rounded-lg cmd:w-full w-[6rem] flex-grow p-5 flex flex-col gap-5 cmd:items-start items-center transition-all duration-200"
 >
-    <ul class="flex flex-col gap-6 ml-2">
+    <ul class="flex flex-col gap-6">
         <SideMenuLink href="/">
             <Library />
-             Tu biblioteca
+            <span class="cmd:block hidden">Tu biblioteca</span>
         </SideMenuLink>
     </ul>
 
-    <ul id="no-scroll" class="w-full h-9 flex gap-2 overflow-auto">
+    <ul id="no-scroll" class="w-full h-9 gap-2 overflow-auto cmd:flex hidden">
         <Tag>Playlists</Tag>
         <Tag>Artistas</Tag>
         <Tag>Álbumes</Tag>
@@ -31,22 +31,56 @@ import PlaylistLink from "./PlaylistLink.astro";
         >
             <Search />
         </button>
-        <button class="flex justify-center items-center gap-2 text-textSpotify">
+        <button
+            class="justify-center items-center gap-2 text-textSpotify cmd:flex hidden"
+        >
             Recientes
             <List />
         </button>
     </section>
 
     <section>
-        <ul
-            class="flex flex-col gap-2 overflow-y-scroll max-h-[450px]"
-            id="no-scroll"
-        >
-            {
-                playlists.map((playlist, i) => (
-                    <PlaylistLink playlist={playlist} />
-                ))
-            }
+        <ul class="gap-2 overflow-auto max-h-[450px] playlists" id="no-scroll">
+            {playlists.map((playlist) => <PlaylistLink playlist={playlist} />)}
         </ul>
     </section>
 </main>
+
+<style>
+    /* No estoy nada orgulloso de esto :c */
+    @media (max-height: 860px) {
+        .playlists {
+            max-height: 400px;
+        }
+    }
+    @media (max-height: 850px) {
+        .playlists {
+            max-height: 350px;
+        }
+    }
+    @media (max-height: 800px) {
+        .playlists {
+            max-height: 300px;
+        }
+    }
+    @media (max-height: 750px) {
+        .playlists {
+            max-height: 250px;
+        }
+    }
+    @media (max-height: 700px) {
+        .playlists {
+            max-height: 200px;
+        }
+    }
+    @media (max-height: 650px) {
+        .playlists {
+            max-height: 150px;
+        }
+    }
+    @media (max-height: 600px) {
+        .playlists {
+            max-height: 100px;
+        }
+    }
+</style>

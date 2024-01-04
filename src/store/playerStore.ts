@@ -7,15 +7,6 @@ type CurrentMusicType = {
     songs: string[];
 };
 
-export const usePlayerStore = create((set) => ({
-    isPlaying: false,
-    currentMusic: { playlist: null, song: null, songs: [] },
-    volume: 1,
-    setVolume: (volume: number) => set({ volume }),
-    setIsPlaying: (isPlaying: boolean) => set({ isPlaying }),
-    setCurrentMusic: (currentMusic: CurrentMusicType) => set({ currentMusic })
-}));
-
 export type PlayerStoreState = {
     isPlaying: boolean;
     currentMusic: CurrentMusicType;
@@ -24,3 +15,12 @@ export type PlayerStoreState = {
     setIsPlaying: (isPlaying: boolean) => void;
     setCurrentMusic: (currentMusic: CurrentMusicType) => void;
 };
+
+export const usePlayerStore = create((set) => ({
+    isPlaying: false,
+    currentMusic: { playlist: null, song: null, songs: [] },
+    volume: 1,
+    setVolume: (volume: number) => set({ volume }),
+    setIsPlaying: (isPlaying: boolean) => set({ isPlaying }),
+    setCurrentMusic: (currentMusic: CurrentMusicType) => set({ currentMusic })
+}));

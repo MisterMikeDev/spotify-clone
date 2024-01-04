@@ -10,6 +10,9 @@ module.exports = {
                 containerSpotifyOther: "#181818",
                 greenSpotify: "#1fdf64",
                 tagSpotify: "hsla(0,0%,100%,.1)"
+            },
+            screens: {
+                cmd: "833px"
             }
         }
     },

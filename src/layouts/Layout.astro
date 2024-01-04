@@ -24,7 +24,7 @@ const { title } = Astro.props;
         <Aside />
         <main
             id="no-scroll"
-            class="[grid-area:main] bg-containerSpotify rounded-lg p-5 overflow-y-scroll relative flex-1"
+            class="[grid-area:main] bg-containerSpotify rounded-lg p-5 overflow-y-scroll relative flex-1 transition-all duration-200"
         >
             <AccessButtons />
             <Gradient client:visible />
@@ -47,7 +47,7 @@ const { title } = Astro.props;
                 grid-template-areas:
                     "aside main main"
                     "footer footer footer";
-                grid-template-columns: 350px 1fr;
+                grid-template-columns: min-content 1fr;
                 grid-template-rows: 1fr auto;
                 font-family: "CircularStd", system-ui, sans-serif;
                 overflow: hidden;
@@ -97,5 +97,16 @@ const { title } = Astro.props;
                 font-display: swap;
             }
         </style>
+        <script>
+            const images = document.querySelectorAll("img");
+            images.forEach((image) => {
+                image.setAttribute("loading", "lazy");
+                image.setAttribute("decoding", "async");
+                image.setAttribute("draggable", "false");
+                image.addEventListener("error", () => {
+                    image.src = "/images/placeholder.png";
+                });
+            });
+        </script>
     </body>
 </html>

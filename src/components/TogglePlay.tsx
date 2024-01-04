@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePlayerStore, type PlayerStoreState } from "../store/playerStore";
 export default function TogglePlay({
     id = 0,
     fullGrow
@@ -6,9 +7,30 @@ export default function TogglePlay({
     id?: number;
     fullGrow: boolean;
 }) {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const { currentMusic, setCurrentMusic, isPlaying, setIsPlaying } =
+        usePlayerStore((state) => state as PlayerStoreState);
+
     const [isHovering, setIsHovering] = useState(false);
-    const handleToogle = () => setIsPlaying(!isPlaying);
+
+    const isPlayingPlaylist =
+        isPlaying && currentMusic?.playlist?.id === String(id);
+
+    const handleClick = () => {
+        if (isPlayingPlaylist) {
+            setIsPlaying(false);
+            return;
+        }
+
+        fetch(`/api/get-info-playlist.json?id=${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const { songs, playlist } = data;
+
+                setIsPlaying(true);
+                setCurrentMusic({ songs, playlist, song: songs[0] });
+            });
+    };
+
     return (
         <div
             className={` h-full absolute top-0 flex items-end justify-end pr-2 pb-2 ${
@@ -18,12 +40,12 @@ export default function TogglePlay({
             onMouseLeave={() => setIsHovering(false)}
         >
             <button
-                onClick={handleToogle}
+                onClick={handleClick}
                 className={`w-12 h-12 bg-greenSpotify text-black flex items-center justify-center rounded-full shadow-2xl transition-all duration-200 transform ${
                     isHovering ? "" : "translate-y-1/3 opacity-0"
                 }`}
             >
-                {isPlaying ? (
+                {isPlayingPlaylist ? (
                     <svg
                         role="img"
                         height="16"

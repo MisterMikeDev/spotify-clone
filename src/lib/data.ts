@@ -64,15 +64,6 @@ export const playlists: Playlist[] = [
         cover: "https://f4.bcbits.com/img/a2793859494_16.jpg",
         artists: ["Chau Saura", "amies", "kyu"],
         pinned: false
-    },
-    {
-        id: "7",
-        albumId: 7,
-        title: "Like a Necessity",
-        color: colors.orange,
-        cover: "https://f4.bcbits.com/img/a0363730459_16.jpg",
-        artists: ["WFS", "Nadav Cohen"],
-        pinned: false
     }
 ];
 
