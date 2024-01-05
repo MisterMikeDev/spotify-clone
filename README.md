@@ -1,41 +1,48 @@
-# Spotify Clone con Astro
+<div align="center">
+
+### <img src="https://github.com/MisterMikeDev.png" height="200px" style="border-radius: 9999px" />
+
+## [Spotify Clone](https://github.com/MisterMikeDev/spotify-clone)
+
+**_Tu Editor Educativo de HTML5/CSS3/JavaScript_**
+
+</div>
+
+<div align="center">
+
+![](https://img.shields.io/badge/¿Es%20educativo%3F-Sí-brightgreen.svg)
+![](https://img.shields.io/badge/¿Es%20con%20fines%20lucro%3F-Obviamente%20no-red.svg)
+
+</div>
+
+<div align="center">
+
+![](/public/demo.webp)
+
+</div>
 
 ## Descripción
 
-Este repositorio contiene un clon del popular servicio de música Spotify construido utilizando Astro, un moderno generador de sitios front-end que ofrece rendimiento increíblemente rápido. Es una herramienta educativa diseñada para aquellos interesados en aprender cómo se construyen aplicaciones web modernas utilizando Astro.
-
-## Características
-
-- Interfaz de usuario similar a Spotify.
-- Reproducción de música.
-- Funcionalidades de búsqueda, playlists y perfiles de usuario.
-- Diseño adaptable a diferentes dispositivos (responsive design).
+Este es un clon de Spotify basado en el proyecto de
+[midudev](https://github.com/midudev/spotify-twitch-clone) con el proposito de
+aprender el uso de Astro con View Transitions, ReactJS, TypeScript y Tailwind
+CSS.
 
 ## Tecnologías utilizadas
 
-- [Astro](https://astro.build/)
-- [Otros frameworks y bibliotecas relevantes]
+-   [Astro](https://astro.build/)
+-   [React](https://reactjs.org/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [Vite](https://vitejs.dev/)
+-   [Bun](https://bun.sh/)
 
 ## Instalación
 
 1. Clona este repositorio:
-   `git clone https://github.com/midudev/spotify-astro-clone.git`
+   `git clone https://github.com/MisterMikeDev/spotify-clone.git`
 
-2. Navega a la carpeta del proyecto:
-   `cd spotify-astro-clone`
+2. Navega a la carpeta del proyecto: `cd spotify-clone`
 
-3. Instala las dependencias:
-   `bun install`
+3. Instala las dependencias: `bun install`
 
-4. Ejecuta el proyecto:
-   `bunx --bun astro dev`
-
-Visita `http://localhost:3000` en tu navegador para ver la aplicación en funcionamiento.
-
-## Contribuciones
-
-Las contribuciones son siempre bienvenidas. Si encuentras algún problema o tienes alguna sugerencia, no dudes en abrir un issue o enviar un pull request.
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+4. Ejecuta el proyecto: `bunx --bun astro dev`

@@ -40,7 +40,10 @@ import PlaylistLink from "./PlaylistLink.astro";
     </section>
 
     <section>
-        <ul class="gap-2 overflow-auto max-h-[450px] playlists" id="no-scroll">
+        <ul
+            class="flex flex-col gap-2 overflow-y-scroll playlists"
+            id="no-scroll"
+        >
             {playlists.map((playlist) => <PlaylistLink playlist={playlist} />)}
         </ul>
     </section>

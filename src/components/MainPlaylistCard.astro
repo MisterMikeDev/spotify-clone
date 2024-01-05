@@ -30,14 +30,5 @@ const { albumId, cover, title } = playlist;
             {title}
         </h2>
     </a>
-    {
-        index === 0 && (
-            <img
-                src="/playlist-playing.gif"
-                alt="Icon for playing a playlist"
-                class="w-4 h-4 mr-4"
-            />
-        )
-    }
     <TogglePlay id={albumId} client:load fullGrow={false} />
 </article>

@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { playlists, songs } from "../../lib/data";
 import { USERNAME, AVATAR } from "../../lib/consts";
 import MusicTable from "../../components/MusicTable.astro";
+import PlaylistPagePlayButton from "@/components/PlaylistPagePlayButton";
 
 const { id } = Astro.params;
 
@@ -14,7 +15,7 @@ const songsLength = songsInPlaylist.length;
 
 <Layout title={`Spotify - ${playlist?.title}`}>
     <main
-        class="flex flex-col gap-16"
+        class="flex flex-col gap-6"
         transition:name={`playlist ${id} fade`}
         transition:animate="fade"
     >
@@ -54,6 +55,13 @@ const songsLength = songsInPlaylist.length;
                 </div>
             </div>
         </header>
+        <section class="ml-8">
+            <PlaylistPagePlayButton
+                albumId={id}
+                songId={songsInPlaylist[0].id}
+                client:load
+            />
+        </section>
         <section>
             <MusicTable songs={songsInPlaylist} />
         </section>

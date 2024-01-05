@@ -49,7 +49,6 @@ module.exports = {
         "space-infix-ops": 2,
         "comma-spacing": 2,
         "brace-style": 2,
-        curly: 2,
         "handle-callback-err": 2,
         "no-undef": 2,
         "no-multiple-empty-lines": 2,

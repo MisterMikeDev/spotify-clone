@@ -1,6 +1,7 @@
 ---
-import type { Song } from "../lib/data";
-import LikeHeart from "../icons/LikeHeart.astro";
+import type { Song } from "@/lib/data";
+import LikeHeart from "@/icons/LikeHeart.astro";
+import MusicTableSongIndexPlay from "@/components/MusicTableSongIndexPlay";
 
 export interface Props {
     index: number;
@@ -11,7 +12,7 @@ const { index, song } = Astro.props;
 ---
 
 <div class="text-textSpotify flex items-center gap-4">
-    <span class="truncate text-gray-400">{index + 1}.</span>
+    <MusicTableSongIndexPlay index={index} song={song} client:load />
     <picture class="flex items-center gap-5 max-w-[210px] w-full"
         ><img
             src={song.image}
